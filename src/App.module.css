@@ -1,0 +1,352 @@
+:root {
+	--name-fade-duration: 0.3s;
+	--name-fade-delay: 1s;
+	--move-up-duration: 2s;
+	--move-up-delay: 1s;
+	--background-color: #e1e2dd;
+	--secondary-color: #747474;
+	--font: 'Playfair Display', serif;
+}
+
+html {
+	scroll-snap-type: y mandatory;
+}
+
+html * {
+	font-family: var(--font);
+}
+
+.letters {
+	position: absolute;
+	color: white;
+	font-size: 50px;
+}
+
+.letters h1 {
+	position: absolute;
+	margin: 0;
+	visibility: hidden;
+	font-family: var(--font);
+	font-weight: 400;
+}
+
+.firstName {
+	top: 60vh;
+	left: 10vw;
+}
+
+.lastName {
+	text-align: right;
+	top: 70vh;
+	left: 70vw;
+}
+
+@media (min-width: 500px) and (max-width: 800px) {
+	.firstName {
+		left: 25vw;
+	}
+	.lastName {
+		left: 60vw;
+	}
+}
+
+@media (min-width: 800px) {
+	.firstName {
+		left: 30vw;
+	}
+	.lastName {
+		left: 60vw;
+	}
+}
+
+/* Letters */
+
+#a {
+	animation: var(--name-fade-duration) ease-out var(--name-fade-delay) 1
+		fadeNameRight forwards;
+	--distanceX: 0;
+}
+
+#l {
+	animation: var(--name-fade-duration) ease-out var(--name-fade-delay) 1
+		fadeNameRight forwards;
+	--distanceX: 68px;
+}
+
+#v {
+	animation: var(--name-fade-duration) ease-out var(--name-fade-delay) 1
+		fadeNameRight forwards;
+	--distanceX: 95px;
+}
+
+#i {
+	animation: var(--name-fade-duration) ease-out var(--name-fade-delay) 1
+		fadeNameRight forwards;
+	--distanceX: 145px;
+}
+
+#n {
+	animation: var(--name-fade-duration) ease-out var(--name-fade-delay) 1
+		fadeNameRight forwards;
+	--distanceX: 175px;
+}
+
+#x {
+	animation: var(--name-fade-duration) ease-out
+		calc(var(--name-fade-delay) + 0.8s) 1 fadeNameLeft forwards;
+	--distanceX: -60px;
+}
+
+#u {
+	animation: var(--name-fade-duration) ease-out
+		calc(var(--name-fade-delay) + 0.8s) 1 fadeNameLeft forwards;
+	--distanceX: 0;
+}
+
+@keyframes fadeNameRight {
+	0% {
+		opacity: 0;
+		transform: translateX(0);
+		visibility: hidden;
+	}
+	100% {
+		opacity: 1;
+		transform: translateX(var(--distanceX));
+		visibility: visible;
+	}
+}
+
+@keyframes fadeNameLeft {
+	0% {
+		opacity: 0;
+		transform: translateX(0);
+		visibility: hidden;
+	}
+	100% {
+		opacity: 1;
+		transform: translateX(var(--distanceX));
+		visibility: visible;
+	}
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+}
+
+.landingSpacer {
+	height: 100vh;
+	scroll-snap-align: start;
+	background-image: url('https://alvin-personal-images.s3.us-west-2.amazonaws.com/reflections.jpeg');
+	background-size: cover;
+	background-position: center;
+}
+
+@media (min-width: 500px) {
+	.landingSpacer {
+		background-image: url('https://alvin-personal-images.s3.us-west-2.amazonaws.com/morainelake.jpeg');
+		background-position: center;
+	}
+}
+
+/* Hi there */
+
+.hiThere {
+	background-color: var(--background-color);
+	height: 100vh;
+	width: 94%;
+	position: relative;
+	scroll-snap-align: start;
+	scroll-snap-stop: always;
+	padding: 3% 3% 0;
+}
+
+.hiThere > h1 {
+	position: absolute;
+	font-family: var(--font);
+	font-size: 70px;
+	font-weight: 400;
+	opacity: 0;
+	line-height: 90%;
+	margin: 10% 0 20%;
+}
+
+.hiThere > h3 {
+	margin: 25vh 0 4vh 0;
+	font-size: 28px;
+	font-weight: 400;
+	line-height: 100%;
+	color: var(--secondary-color);
+	opacity: 0%;
+}
+
+.hiThere > hr {
+	margin: 7% 0%;
+	height: 1px;
+	border: none;
+	color: black;
+	background-color: #333;
+	opacity: 0%;
+}
+
+.hiThere > p {
+	font-size: 17px;
+	font-weight: 400;
+	opacity: 0%;
+}
+
+@media (min-width: 500px) and (max-width: 800px) {
+	.hiThere > hr {
+		margin: 2% 0%;
+	}
+
+	.hiThere > p {
+		font-size: 20px;
+	}
+
+	.hiThere > h3 {
+		margin-top: 20vh;
+	}
+}
+
+@media (min-width: 800px) {
+	.hiThere {
+		width: 60%;
+		padding: 0 20%;
+	}
+
+	.hiThere > hr {
+		margin: 2% 0%;
+	}
+
+	.hiThere > h3 {
+		margin: 30% 0 2vh 0;
+	}
+
+	.hiThere > p {
+		font-size: 24px;
+	}
+
+	.p3 {
+		height: 93vh;
+		padding: 2vh 20vw 5vh;
+	}
+
+	.p3 > p {
+		font-size: 22px;
+	}
+}
+
+.p2FadeIn {
+	animation: 0.5s ease-out 3.5s 1 fadeIn forwards;
+}
+
+.moveUpAnimation {
+	animation: var(--move-up-duration) cubic-bezier(0.22, 0.61, 0.36, 1)
+		var(--move-up-delay) 1 moveUp forwards;
+}
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0%;
+	}
+
+	100% {
+		opacity: 100%;
+	}
+}
+
+@keyframes moveUp {
+	0% {
+		opacity: 0%;
+		top: 15%;
+	}
+
+	50% {
+		top: 15%;
+	}
+
+	100% {
+		opacity: 100%;
+		top: 0%;
+	}
+}
+
+.hiThereContinued {
+	background-color: var(--background-color);
+	height: 100vh;
+	width: 94%;
+	position: relative;
+	scroll-snap-align: start;
+	scroll-snap-stop: always;
+	padding: 3% 3% 15%;
+}
+
+.p3FadeIn {
+	animation: 0.5s ease-out 0.5s 1 fadeIn forwards;
+}
+
+/* Links */
+
+.linksContainer {
+	position: relative;
+	background-color: var(--background-color);
+	scroll-snap-align: start;
+	padding: 25vh 20vw 0;
+	height: 75vh;
+}
+
+.linksContainer > h1 {
+	margin: 0;
+	font-size: 70px;
+	font-weight: 400;
+}
+
+.linksContainer > ul {
+	list-style-type: none;
+}
+
+.linksContainer a {
+	font-size: 36px;
+	font-weight: lighter;
+	text-decoration: none;
+	color: black;
+}
+
+.textHoverUnderline {
+	display: inline-block;
+	position: relative;
+	color: black;
+}
+
+.textHoverUnderline::after {
+	content: '';
+	position: absolute;
+	width: 100%;
+	transform: scaleX(0);
+	height: 2px;
+	bottom: 0;
+	left: 0;
+	background-color: black;
+	transform-origin: bottom left;
+	transition: transform 0.3s ease-out;
+}
+
+.textHoverUnderline:hover::after {
+	transform: scaleX(1);
+	transform-origin: bottom left;
+}
+
+@media (min-width: 500px) and (max-width: 800px) {
+	.linksContainer {
+		height: 75vh;
+		padding: 25vh 30vw 0;
+	}
+}
+
+@media (min-width: 800px) {
+	.linksContainer {
+		height: 75vh;
+		padding: 25vh 30vw 0;
+	}
+}
